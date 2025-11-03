@@ -91,7 +91,7 @@ netf
 dns
 ;;
 15)
-wget -q -O /usr/bin/xraychanger "https://raw.githubusercontent.com/NiLphreakz/XrayCore-Custompath/main/xraychanger.sh" && chmod +x /usr/bin/xraychanger && xraychanger
+wget -q -O /usr/bin/xcorechanger "https://raw.githubusercontent.com/NiL070/XrayCoreChanger/main/xcorechanger.sh" && chmod +x /usr/bin/xcorechanger && xcorechanger
 ;;
 16)
 change-dropbear
