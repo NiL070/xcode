@@ -69,6 +69,9 @@ apt-get remove --purge exim4 -y
 apt install htop -y
 apt install iftop -y 
 
+# install git
+apt install git -y
+
 # install wget and curl
 apt -y install wget curl
 
