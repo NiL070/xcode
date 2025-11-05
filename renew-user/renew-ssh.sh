@@ -1,29 +1,4 @@
 #!/bin/bash
-# Renew (or subtract) user expiry — robust version with verification and helpful warnings.
-# Accepts positive days to add, or negative days to subtract (e.g. -5).
-# Run as root.
-
-GitUser="NiL070"
-MYIP=$(curl -sS ifconfig.me)
-
-# --- permission / validity (sama logic asal, ringkas)
-VALIDITY () {
-    today=$(date -u +"%Y-%m-%d")
-    Exp1=$(curl -s https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep "$MYIP" | awk '{print $4}')
-    if [[ -n "$Exp1" && "$today" < "$Exp1" ]]; then
-      return 0
-    else
-      echo -e "\e[31mYOUR SCRIPT HAS EXPIRED or permission missing!\e[0m"
-      exit 1
-    fi
-}
-
-IZIN=$(curl -s https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | awk '{print $5}' | grep -w "$MYIP")
-if [ -z "$IZIN" ]; then
-    echo -e "\e[31mPermission Denied! Please buy script first\e[0m"
-    exit 1
-fi
-VALIDITY
 
 # ensure root
 if [ "$(id -u)" -ne 0 ]; then
