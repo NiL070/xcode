@@ -81,22 +81,10 @@ ln -fs /usr/share/zoneinfo/Asia/Kuala_Lumpur /etc/localtime
 # set locale
 sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 
-apt install linux-image-rt-amd64 -y
-
 # install
 apt-get --reinstall --fix-missing install -y bzip2 gzip coreutils wget screen rsyslog iftop htop net-tools zip unzip wget net-tools curl nano sed screen gnupg gnupg1 bc apt-transport-https build-essential dirmngr libxml-parser-perl neofetch git lsof
 echo "clear" >> .profile
 echo "menu" >> .profile
-
-# /etc/sysctl.d/90-lowlatency.conf
-net.core.default_qdisc = fq_codel
-# (opsyen, untuk TCP—tak bantu ICMP secara langsung tapi bantu mengurangkan barisan)
-net.ipv4.tcp_congestion_control = bbr
-sudo sysctl --system
-
-apt install cpufrequtils -y
-echo 'GOVERNOR="performance"' | sudo tee /etc/default/cpufrequtils
-systemctl restart cpufrequtils
 
 apt install irqbalance -y
 systemctl enable --now irqbalance
